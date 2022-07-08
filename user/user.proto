@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// 定义protobuf包名pacakage_name
+package helloworld;
+
+// 如果不使用restful http协议，可以不引入此proto
+import "google/api/annotations.proto";
+
+// 这里go_package指定的是protofbu生成文件xxx.pb.go在git上的地址
+option go_package = "github.com/tencentyun/tsf-go/examples/helloworld/proto";
+
+// 定义服务名service_name
+service Greeter {
+  // 方法接口名,rpc_method
+  rpc SayHello (HelloRequest) returns (HelloReply)  {
+      }
+}
+
+//  请求参数
+message HelloRequest {
+  string name = 1;
+}
+
+// 响应参数
+message HelloReply {
+  string message = 1;
+}
